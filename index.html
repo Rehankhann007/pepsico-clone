@@ -1,0 +1,841 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- SwiperJS CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <style>
+    @import url(https://db.onlinewebfonts.com/c/042fdc0ad9bf83440df6afe1bbadf684?family=Graphik+LC+Web+Bold+Regular);
+
+    * {
+      font-family: "Graphik LC Web Bold Regular";
+    }
+
+    /* underline hover animation */
+    .nav-link {
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background-color: #005CB9;
+      /* Pepsi blue */
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .nav-link-right {
+      position: relative;
+    }
+
+    .nav-link-right::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background-color: #005CB9;
+      /* Pepsi blue */
+    }
+
+    .nav-link-right:hover::after {
+      width: 100%;
+    }
+
+    /* yellow highlight only half height */
+    .highlight-half {
+      background: linear-gradient(to top, #FFD200 50%, transparent 50%);
+      display: inline;
+    }
+
+    /* Navigation button styling */
+    .swiper-button-next,
+    .swiper-button-prev {
+      width: 65px;
+      height: 65px;
+    }
+
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+      content: "";
+    }
+
+    @keyframes marquee {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-100%);
+      }
+
+      /* Half width tak hi shift hoga */
+    }
+
+    .marquee-wrapper {
+      display: flex;
+      overflow: hidden;
+    }
+
+    .animate-marquee {
+      display: flex;
+      width: max-content;
+      animation: marquee 40s linear infinite;
+      /* Speed control */
+    }
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  footer {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .footer-link {
+    position: relative;
+    display: inline-block;
+    transition: color 0.2s ease;
+  }
+
+  .footer-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0%;
+    height: 2px;
+    background: skyblue;
+    transition: width 0.3s ease;
+  }
+
+  .footer-link:hover::after {
+    width: 100%;
+  }
+
+    
+  </style>
+</head>
+
+<body class="overflow-x-hidden">
+  <!-- Navbar -->
+  <header id="navbar" class="absolute top-0 left-0 w-full z-50">
+    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-[80px]">
+      <!-- Logo -->
+      <div class="flex-shrink-0 hidden md:flex space-x-8 font-semibold text-white">
+        <a href="#" class="nav-link-right text-[20px] leading-[10px] absolute top-12 left-[65px] font-[900]">PEPSICO</a>
+      </div>
+
+      <!-- Center Menu -->
+      <nav class="hidden md:flex space-x-4 font-[700] text-[14px] absolute top-[35px] left-[270px] text-white">
+        <div class="flex"><a href="#" class="nav-link ">Who We Are </a>
+          <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink">
+            <g id="1-Atoms/icons/caret/down" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g id="Group" transform="translate(7.000000, 9.000000)" fill="#ffffff" fill-rule="nonzero">
+                <g id="Path">
+                  <polygon transform="translate(4.765172, 3.000000) rotate(-90.000000) translate(-4.765172, -3.000000) "
+                    points="1.7651715 3 6.53034301 7.7651715 7.7651715 6.53034301 4.2348285 3 7.7651715 -0.530343008 6.53034301 -1.7651715">
+                  </polygon>
+                </g>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <div class="flex"> <a href="#" class="nav-link">Our Impact</a>
+          <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink">
+            <g id="1-Atoms/icons/caret/down" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g id="Group" transform="translate(7.000000, 9.000000)" fill="#ffffff" fill-rule="nonzero">
+                <g id="Path">
+                  <polygon transform="translate(4.765172, 3.000000) rotate(-90.000000) translate(-4.765172, -3.000000) "
+                    points="1.7651715 3 6.53034301 7.7651715 7.7651715 6.53034301 4.2348285 3 7.7651715 -0.530343008 6.53034301 -1.7651715">
+                  </polygon>
+                </g>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <div class="flex"> <a href="#" class="nav-link">Our Brands</a>
+          <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink">
+            <g id="1-Atoms/icons/caret/down" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g id="Group" transform="translate(7.000000, 9.000000)" fill="#ffffff" fill-rule="nonzero">
+                <g id="Path">
+                  <polygon transform="translate(4.765172, 3.000000) rotate(-90.000000) translate(-4.765172, -3.000000) "
+                    points="1.7651715 3 6.53034301 7.7651715 7.7651715 6.53034301 4.2348285 3 7.7651715 -0.530343008 6.53034301 -1.7651715">
+                  </polygon>
+                </g>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <div class="flex"> <a href="#" class="nav-link">Our Stories</a>
+        </div>
+        <div class="flex"> <a href="#" class="nav-link">Investors</a>
+        </div>
+        <div class="flex"> <a href="#" class="nav-link">Resources</a>
+          <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink">
+            <g id="1-Atoms/icons/caret/down" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g id="Group" transform="translate(7.000000, 9.000000)" fill="#ffffff" fill-rule="nonzero">
+                <g id="Path">
+                  <polygon transform="translate(4.765172, 3.000000) rotate(-90.000000) translate(-4.765172, -3.000000) "
+                    points="1.7651715 3 6.53034301 7.7651715 7.7651715 6.53034301 4.2348285 3 7.7651715 -0.530343008 6.53034301 -1.7651715">
+                  </polygon>
+                </g>
+              </g>
+            </g>
+          </svg>
+        </div>
+      </nav>
+
+      <!-- Right Menu -->
+      <div class="hidden md:flex space-x-6 text-[14px absolute right-[25px] font-[600] text-white">
+        <a href="#" class="nav-link">Contact</a>
+        <a href="#" class="nav-link">US</a>
+        <button>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1110.5 3a7.5 7.5 0 016.15 13.65z" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Hamburger -->
+      <div class="md:hidden">
+        <button id="menu-btn" class="focus:outline-none">
+          <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-black/70 px-6 pb-4 space-y-2 font-semibold text-white">
+      <a href="#" class="block nav-link">Who We Are</a>
+      <a href="#" class="block nav-link">Our Impact</a>
+      <a href="#" class="block nav-link">Our Brands</a>
+      <a href="#" class="block nav-link">Our Stories</a>
+      <a href="#" class="block nav-link">Investors</a>
+      <a href="#" class="block nav-link">Resources</a>
+      <a href="#" class="block nav-link">Contact</a>
+      <a href="#" class="block nav-link">US</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative w-full h-[115vh] bg-cover bg-center"
+    style="background-image: url('./Img/for_use_pepsico_dotcom_only_20240212_0112_d.png');">
+    <div class="absolute inset-0 bg-black/20"></div>
+    <div class="relative z-10 flex items-center justify-center h-full px-6">
+      <h1 class="text-4xl md:text-[62px] font-[700] text-white text-center leading-[72px]">
+        Create more <span class="highlight-half">smiles</span> with every <br> sip and every bite
+      </h1>
+    </div>
+  </section>
+
+  <!-- News Ticker Section -->
+  <section class="relative h-[110px] w-full bg-white flex items-center overflow-hidden border-y border-gray-200">
+    <div class="whitespace-nowrap flex animate-marquee hover:[animation-play-state:paused]">
+      <div class="relative flex ml-20">
+        <img class="absolute left-[-20px] top-[-12px]" src="./Img/openmoji-farmer-1f9d1-200d-1f33e_color.png" alt="">
+        <p class="text-[#003DA5] font-sans font-[700] text-[24px] leading-[30px] pl-10">
+          The National Geographic Society and PepsiCo </p>
+        <p class="text-[#003DA5] font-sans font-[400] font-family-sans text-[24px] leading-[30px] pl-2">launch new “Food
+          for Tomorrow” program →</p>
+      </div>
+      <div class="relative flex ml-20">
+        <img class="absolute left-[-20px] top-[-12px]" src="./Img/openmoji-megaphone-1f4e3_color.png" alt="">
+        <p class="text-[#003DA5] font-sans font-[700] text-[24px] leading-[30px] pl-10">
+          Celsius Holdings and PepsiCo strengthen </p>
+        <p class="text-[#003DA5] font-sans font-[400] font-family-sans text-[24px] leading-[30px] pl-2">long-term
+          strategic partnership →</p>
+      </div>
+      <div class="relative flex ml-20">
+        <img class="absolute left-[-20px] top-[-12px]" src="./Img/openmoji-globe-showing-europe-africa-1f30d_color.png"
+          alt="">
+        <p class="text-[#003DA5] font-sans font-[700] text-[24px] leading-[30px] pl-10"> PepsiCo reports 2024 progress
+          against</p>
+        <p class="text-[#003DA5] font-sans font-[400] font-family-sans text-[24px] leading-[30px] pl-2">pep+
+          sustainability and nutrition goals →</p>
+      </div>
+      <div class="relative flex ml-20">
+        <img class="absolute left-[-20px] top-[-12px]" src="./Img/openmoji-cup-with-straw-1f964_color.png" alt="">
+        <p class="text-[#003DA5] font-sans font-[700] text-[24px] leading-[30px] pl-10">PepsiCo launches first ever
+          Prebiotic Cola</p>
+        <p class="text-[#003DA5] font-sans font-[400] font-family-sans text-[24px] leading-[30px] pl-2">in traditional
+          cola category →</p>
+      </div>
+      <div class="relative flex ml-20">
+        <img class="absolute left-[-20px] top-[-12px]" src="./Img/openmoji-megaphone-1f4e3_color.png" alt="">
+        <p class="text-[#003DA5] font-sans font-[700] text-[24px] leading-[30px] pl-10">Q2 2025 Earnings</p>
+        <p class="text-[#003DA5] font-sans font-[400] font-family-sans text-[24px] leading-[30px] pl-2">results
+          available now →</p>
+      </div>
+
+
+    </div>
+  </section>
+
+
+
+  <!-- Slider Container -->
+  <div class="swiper mySwiper w-full h-screen">
+    <div class="swiper-wrapper">
+
+      <!-- Slide 1 -->
+      <div class="swiper-slide flex flex-col md:flex-row w-full h-full">
+        <!-- Left Content -->
+        <div class="bg-[#00AEEF] flex flex-col px-8 md:px-15 py-[24px] w-full md:w-1/2 text-white">
+          <h3 class="text-sm  mb-6">Sustainability</h3>
+          <h2 class="text-3xl md:text-5xl font-bold leading-sung mb-6">
+            How PepsiCo is making every <br> drop of water count
+          </h2>
+          <p class="mb-6 text-lg">
+            PepsiCo is working with partners to conserve and replenish water
+            where it’s needed most — learn how we restored 24 billion liters
+            of water globally in 2024.
+          </p>
+          <a href="#" class="font-bold hover:underline underline-offset-4">Read more →</a>
+        </div>
+        <!-- Right Image -->
+        <div class="w-full md:w-1/2 h-full">
+          <img src="./Img/water-resources-720x760.jpg" class="w-full h-full object-cover" alt="Slide 1" />
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="swiper-slide flex flex-col md:flex-row w-full h-full">
+        <div class="bg-[#c6404d] flex flex-col px-8 md:px-15 py-[24px] w-full md:w-1/2 text-white">
+          <h3 class="text-sm  mb-6">Brands & Programs</h3>
+          <h2 class="text-3xl md:text-5xl font-bold leading-snug mb-6">
+            In the kitchen: poppi, our <br> new feel-good fizz
+          </h2>
+          <p class="mb-6 text-lg">
+            Poppi will soon be bubbling up in more places, thanks to PepsiCo’s
+            scale, reach and commitment to functional product innovation.
+          </p>
+          <a href="#" class="font-bold underline underline-offset-4">Read more →</a>
+        </div>
+        <div class="w-full md:w-1/2 h-full">
+          <img src="./Img/in-the-kitchen-poppi-hero-720x760.jpg" class="w-full h-full object-cover" alt="Slide 2" />
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="swiper-slide flex flex-col md:flex-row w-full h-full">
+        <div class="bg-[#568302] flex flex-col px-8 md:px-15 py-[24px] w-full md:w-1/2 text-white">
+          <h3 class="text-sm  mb-6">Brands & Programs</h3>
+          <h2 class="text-3xl md:text-5xl font-bold leading-snug mb-6">
+            The inspiration behind 6 <br> seriously unexpected chip <br> flavors
+          </h2>
+          <p class="mb-6 text-lg">
+            Discover how PepsiCo is rethinking packaging, reducing waste, and
+            creating better experiences for customers worldwide.
+          </p>
+          <a href="#" class="font-bold underline underline-offset-4">Read more →</a>
+        </div>
+        <div class="w-full md:w-1/2 h-full">
+          <img src="./Img/chip-flavors-story-portrait-thumbnail.jpg" class="w-full h-full object-cover" alt="Slide 3" />
+        </div>
+      </div>
+
+      <!-- Slide 4 -->
+      <div class="swiper-slide flex flex-col md:flex-row w-full h-full">
+        <div class="bg-[#c05535] flex flex-col px-8 md:px-15 py-[24px] w-full md:w-1/2 text-white">
+          <h3 class="text-sm  mb-6">Sustainability</h3>
+          <h2 class="text-3xl md:text-5xl font-bold leading-snug mb-6">
+            How regenerative <br> agriculture can help farms <br> and the planet thrive
+          </h2>
+          <p class="mb-6 text-lg">
+            PepsiCo continues to support communities with programs designed to
+            inspire and empower future generations.
+          </p>
+          <a href="#" class="font-bold underline underline-offset-4">Read more →</a>
+        </div>
+        <div class="w-full md:w-1/2 h-full">
+          <img src="./Img/regen-ag-720x760.jpg" class="w-full h-full object-cover" alt="Slide 4" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Arrows -->
+    <div class="swiper-button-next ">
+      <img src="./Img/Right@3x_white.svg" alt="">
+    </div>
+    <div class="swiper-button-prev ">
+      <img class="absolute left-[750px]" src="./Img/Left@3x_white.svg" alt="">
+    </div>
+  </div>
+
+
+  <section class="relative w-full h-[165vh] overflow-hidden">
+    <!-- Background Image -->
+    <img src="./Img/for_use_pepsico_dotcom_only_20240311_0603.png" alt="Background"
+      class="absolute inset-0 w-[100%] px-[135px] pb-12 pt-[173px] h-full object-cover z-[-1]">
+
+    <!-- Chili PNG Top -->
+    <img src="./Img/peppers.png" alt="Chili" class="absolute top-7 left-1 w-[180px] md:w-[300px] z-10">
+
+    <!-- Overlay Content -->
+    <div class="relative flex flex-col items-center justify-end text-center px-6 py-[120px] h-full">
+      <p class="text-white text-lg md:text-xl font-semibold mb-2">
+        Make today special
+      </p>
+      <h2 class="text-black text-3xl md:text-5xl font-extrabold leading-snug mb-[1px] bg-white px-4 py-1 inline-block">
+        Explore recipes featuring your
+      </h2>
+      <h2 class="text-black text-3xl md:text-5xl font-extrabold leading-snug mb-2 bg-white px-4 py-1 inline-block">
+        favorite products
+      </h2>
+      <a href="#" class="text-white hover:underline text-lg md:text-xl font-semibold px-4 py-2 inline-block">
+        Recipes on TastyRewards.com <span class="no-underline inline-block ml-1">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- 2nd Image Section -->
+  <section class="relative w-full h-[100vh]  overflow-hidden py-5">
+    <!-- Background Image -->
+    <img src="./Img/homepage_card_pepplus.jpg" alt="Background"
+      class="absolute inset-0 w-[100%] h-full pb-[30px] px-[127px] object-cover z-[-1]">
+
+
+
+    <!-- Overlay Content -->
+    <div class="relative z-10 flex flex-col items-center justify-end text-center px-6 pb-[58px] h-full">
+      <p class="text-white text-lg md:text-xl font-semibold mb-2">
+        PepsiCo Positive
+      </p>
+      <h2 class="text-black text-3xl md:text-5xl font-extrabold leading-snug mb-[1px] bg-white px-4 py-1 inline-block">
+        Building a stronger, more
+      </h2>
+      <h2 class="text-black text-3xl md:text-5xl font-extrabold leading-snug mb-2 bg-white px-4 py-1 inline-block">
+        sustainable future
+      </h2>
+
+      <a href="#" class="text-white hover:underline text-lg md:text-xl font-semibold px-4 py-2 inline-block">
+        Our Commitments <span class="no-underline inline-block ml-1">→</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="w-full h-[80vh] flex pt-9 justify-center">
+    <div class="h-[80%] w-[84%] ml-1 flex justify-center gap-7">
+      <div class="h-full w-[75%] relative">
+        <div class="absolute top-[350px] bg-white text-[28px] font-700 px-2">Inclusion</div>
+        <img src="./Img/for_use_pepsico_dotcom_only_20240311_1284_hp.png" alt="">
+        <div class="text-16px font-400 leading-[32px] py-3 font-sans">At PepsiCo, opportunity is for everyone</div>
+        <div class="text-[20px] hover:underline hover:cursor-pointer">Inclusion <span
+            class="no-underline inline-block ml-1">→</span></div>
+      </div>
+      <div class="h-full relative w-[75%] ">
+        <div class="absolute top-[350px] bg-white text-[28px] font-700 px-2">Nutrition</div>
+        <img src="./Img/for_use_pepsico_dotcom_only_20240311_0131.png" alt="">
+        <div class="text-16px font-400 leading-[32px] py-3 font-sans">What's inside matters</div>
+        <div class="text-[20px] hover:underline hover:cursor-pointer">Our Nutrition Story <span
+            class="no-underline inline-block ml-1">→</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative  text-[180px] text-[#eeefef]">
+    <div class="absolute left-[-12px]">Hungry?</div>
+    <div class="absolute flex items-center top-[140px] left-[110px] text-[32px] text-black">
+      <div class="bg-blue-800 h-2 w-8 "></div>
+      <div class="px-2">Our Brands</div>
+    </div>
+  </section>
+
+  <section class="h-[100vh] mt-[325px] relative ">
+    <div class="flex h-[220px] absolute left-[-113px] gap-8 w-[100vw]">
+      <img src="./Img/pepsi_12oz.png" alt="">
+      <img src="./Img/lays.png" alt="">
+      <img src="./Img/mountain-dew-can.png" alt="">
+      <img src="./Img/quaker_oldfashion_oats.png" alt="">
+      <img src="./Img/gat_hero_28oz_ml_or_refl.png" alt="">
+      <img src="./Img/pepsi_zero.png" alt="">
+      <img src="./Img/tostitos-rstc.png" alt="">
+    </div>
+
+<img class="w-[220px] absolute left-[-110px] top-[245px]" src="./Img/doritos-nc.png" alt="">
+<img class="w-[220px] absolute left-[130px] top-[495px]" src="./Img/off-the-eaten-path-copy.png" alt="">
+<img class="w-[220px] absolute left-[-110px] top-[495px]" src="./Img/lit_lemon_16-9oz.png" alt="">
+<img class="w-[220px] absolute left-[135px] top-[245px]" src="./Img/frapp_vanilla_13-7oz.png" alt="">
+
+<img class="w-[220px] absolute right-[-110px] top-[245px]" src="./Img/aquafina_canned.png" alt="">
+<img class="w-[220px] absolute right-[130px] top-[495px]" src="./Img/sodastream.png" alt="">
+<img class="w-[220px] absolute right-[-110px] top-[495px]" src="./Img/cheetos-crunchy-(1).png" alt="">
+<img class="w-[220px] absolute right-[135px] top-[245px]" src="./Img/ruffles-xxl-cheddar-sour-cream-(1).png" alt="">
+
+    <div class="flex justify-center h-[110vh] items-center">
+      <div class="h-[350px] w-[550px] mt-[210px]">
+        <div class="text-center">
+          <h1 class="text-[18px] text-gray-600">Everyday Delicious</h1>
+          <h1 class="text-[32px] mt-[40px]">So many choices, so much to</h1>
+          <h1 class="text-[28px]">smile about</h1>
+          <h1 class="text-[18px] font-sans text-gray-800 mt-[26px]">Discover more about our products, their nutrition
+            information and</h1>
+          <h1 class="text-[16px] font-sans text-gray-800"> where to buy.</h1>
+          <div class="text-[20px] hover:underline hover:cursor-pointer mt-[46px]">Find your favorite <span
+              class="no-underline inline-block ml-1">→</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex h-[220px] absolute left-[-113px] gap-8 w-[100vw]">
+        <img src="./Img/fritos-original.png" alt="">
+      <img src="./Img/bubly_blackberry.png" alt="">
+      <img src="./Img/sabra-roasted-red-pepper-hummus.png" alt="">
+      <img src="./Img/mirinda_orange_refreshed.png" alt="">
+      <img src="./Img/dietpepsi_12.png" alt="">
+      <img src="./Img/rold-gold-tt.png" alt="">
+      <img src="./Img/7up_glasssilo.png" alt="">
+    </div>
+  </section>
+
+  <section class="h-[105vh] flex flex-col items-center justify-center gap-28 relative w-full bg-[#c05535] mt-[390px]">
+    <img class="absolute left-0 top-0 w-[250px] h-[190px]" src="./Img/bite.gif" alt="">
+    <h1 class="text-[62px] text-white">Let's eat!</h1>
+    <div class="flex items-center ml-[110px] gap-[100px]">
+      <div class="text-center">
+      <i class="fa-regular text-5xl text-white fa-star"></i>
+     <div class="text-[32px] hover:underline hover:cursor-pointer text-white">Snacks.com <span
+              class="no-underline inline-block ml-1 text-white">→</span></div>
+              <div class="text-white font-sans text-[18px] font-[400]">Snacks straight to your door</div>
+    </div>
+    <div class="h-[180px] w-[2px] bg-white"></div>
+    <div class="text-center">
+      <i class="fa-solid text-5xl text-white fa-bag-shopping"></i>
+     <div class="text-[32px] hover:underline hover:cursor-pointer text-white">Pantryshop.com <span
+              class="no-underline inline-block ml-1 text-white">→</span></div>
+              <div class="text-white font-sans text-[18px] font-[400]">Stock up on your faves</div>
+    </div>
+    <div class="h-[180px] w-[2px] bg-white"></div>
+    <div class="text-center">
+      <i class="fa-solid text-5xl text-white fa-location-dot"></i>
+     <div class="text-[32px] hover:underline hover:cursor-pointer text-white">Pepsico Partners <span
+              class="no-underline inline-block ml-1 text-white">→</span></div>
+              <div class="text-white font-sans text-[18px] font-[400]">Only the best for our partners</div>
+    </div>
+    </div>
+  </section>
+
+<!-- Latest Section -->
+<section class="bg-[#005CB9] h-[90vh] py-16 relative">
+  <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8 items-start">
+    
+    <!-- Left Heading + Arrow -->
+    <div class="relative col-span-1 flex flex-col justify-start">
+      <h2 class="text-white mt-[110px] text-4xl font-bold leading-tight">
+        Check out the latest
+      </h2>
+      <img src="./Img/Arrow-White-Mirror.gif" 
+           alt="arrow" 
+           class="w-12 mt-6 ml-36" />
+    </div>
+
+    <!-- Right Slider -->
+    <div class="col-span-3 relative">
+      <div class="swiper myLatestSwiper">
+        <div class="swiper-wrapper">
+          <!-- Slide 1 -->
+          <div class="swiper-slide rounded-lg overflow-hidden">
+            <img src="./Img/img1.jpg" alt="Image 1" class="w-full h-[300px] object-cover">
+            <p class="p-4 text-white font-semibold">
+              PepsiCo is rooted in agriculture. The future we share with farmers, communities, and the planet depends
+            </p>
+          </div>
+          <!-- Slide 2 -->
+          <div class="swiper-slide rounded-lg overflow-hidden">
+            <img src="./Img/img2.jpg" alt="Image 2" class="w-full h-[300px] object-cover">
+            <p class="p-4 text-white font-semibold">
+              We’ve always got your bites and sips covered for the weekend 😊
+            </p>
+          </div>
+          <!-- Slide 3 -->
+          <div class="swiper-slide rounded-lg overflow-hidden">
+            <img src="./Img/img3.jpg" alt="Image 3" class="w-full h-[300px] object-cover">
+            <p class="p-4 text-white font-semibold">
+              Which one of these would take you to new heights? 💫🧡
+            </p>
+          </div>
+          <!-- Slide 4 -->
+          <div class="swiper-slide rounded-lg overflow-hidden">
+            <img src="./Img/img4.jpg" alt="Image 4" class="w-full h-[300px] object-cover">
+            <p class="p-4 text-white font-semibold">
+             We’re taking flavor further with a new global brand experience now open at @disneylandparis!  Meet Overland Trail Cafe, a permanent culinary concept that...
+            </p>
+          </div>
+          <!-- Slide 5 -->
+          <div class="swiper-slide rounded-lg overflow-hidden">
+            <img src="./Img/img6.jpg" alt="Image 5" class="w-full h-[300px] object-cover">
+            <p class="p-4 text-white font-semibold">
+             ☀️ Summer’s here—and so are the flavor drops. From BBQs to pool hangs, our new summer bites and sips are made for every moment.
+            </p>
+          </div>
+          <!-- Slide 6 -->
+          <div class="swiper-slide rounded-lg overflow-hidden">
+            <img src="./Img/img5.jpg" alt="Image 6" class="w-full h-[300px] object-cover">
+            <p class="p-4 text-white font-semibold">
+              Week 1 is finally here!!! 🏈 Which games are you most hungry for?
+            </p>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="swiper-button-prev flex items-center justify-center">
+          <img src="./Img/Left@3x_white.svg"  />
+        </div>
+        <div class="swiper-button-next flex items-center justify-center">
+          <img src="./Img/Right@3x_white.svg"  />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="flex w-full">
+  <div class="w-[50%]  ">
+    <img class="h-[115vh] object-fit w-[100vw]" src="./Img/homepage_careers_card_009-caglar-kaya.jpg" alt="">
+  </div>
+  <div class="w-[50%] relative">
+    <div class="h-[200px] w-[320px] left-[125px] top-[330px] flex flex-col justify-between absolute">
+      <h1 class="text-[24px]">Work with us</h1>
+      <h1 class="text-[48px]">Careers</h1>
+      <h1 class="text-[16px] font-sans pb-6">Become a part of our talent community.</h1>
+      <h1 class="text-[18px] pb-2 hover:cursor-pointer hover:underline">Explore Careers at PepsiCo <span
+              class="no-underline inline-block ml-1">→</span></h1>
+    </div>
+  </div>
+</section>
+
+<section class="h-[110vh] w-full relative">
+  <div class="absolute top-[550px] left-[145px]">
+  <h1 class="text-white text-[18px] mb-[12px]">PepsiCo Foundation</h1>
+<h1 class="bg-white text-[48px]">Driven by the passion to do </h1>
+<h1 class="bg-white w-32 mt-[2px] text-[48px]">more</h1>
+<h1 class="text-white text-[18px] mt-[12px] hover:cursor-pointer hover:underline">Philanthropy <span class="no-underline inline-block ml-1">→</span> </h1>
+</div>
+<img src="./Img/homepage_philanthropy_card_wateraid-recovered.jpg" alt="">
+
+</section>
+
+<section class="flex w-full">
+  
+  <div class="w-[50%] mt-[38px] relative bg-[#ffc107]">
+    <div class="h-[200px] w-[580px] left-[125px] text-black top-[240px] flex flex-col justify-between absolute">
+      <h1 class="text-[24px]">Partner with us</h1>
+      <h1 class="text-[48px] font-sans leading-[56px] font-black">We work hard for our partners</h1>
+      <h1 class="text-[16px] font-sans pt-[30px] pb-6">An unparalleled portfolio, best-in-class service and in-depth consumer insights give our partners a competitive advantage</h1>
+      <h1 class="text-[18px] pb-2 hover:cursor-pointer hover:underline">Foodservice <span
+              class="no-underline inline-block ml-1">→</span></h1>
+    </div>
+  </div>
+
+  <div class="w-[50%]  ">
+    <img class="h-[115vh] object-fit w-[100vw]" src="./Img/homepage_foodservice_card_hello-goodness-better-banner-en-fr-ca-widescreen.jpg" alt="">
+  </div>
+</section>
+
+<section class=" mx-auto px-6 py-12 grid md:grid-cols-3 gap-8">
+  <!-- Card 1 -->
+  <div>
+    <img src="./Img/homepage_government_card_positive_value_chain.jpg" alt="Media Resources" class="w-full h-auto object-cover">
+    <h3 class="mt-4 font-bold text-xl">Media Resources</h3>
+    <ul class="mt-3 space-y-4">
+      <li>
+        <a href="#"
+           class="text-black font-medium hover:underline cursor-pointer">
+          Press Releases <span class="no-underline">→</span>
+        </a>
+      </li>
+      <li>
+        <a href="#"
+           class="text-black font-medium hover:underline cursor-pointer">
+          Media Gallery <span class="no-underline">→</span>
+        </a>
+      </li>
+      <li>
+        <a href="#"
+           class="text-black font-medium hover:underline cursor-pointer">
+          Media Contact <span class="no-underline">→</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Card 2 -->
+  <div>
+    <img src="./Img/homepage_nutrition_card_3-avocadosalsa_ls.png" alt="Nutrition Resources" class="w-full h-auto object-cover">
+    <h3 class="mt-4 font-bold text-xl">Nutrition Resources</h3>
+    <ul class="mt-3 space-y-4">
+      <li>
+        <a href="#"
+           class="text-black font-medium hover:underline cursor-pointer">
+          PepsiCo SmartLabel <span class="no-underline">→</span>
+        </a>
+      </li>
+      <li>
+        <a href="#"
+           class="text-black font-medium hover:underline cursor-pointer">
+          PepsiCo Product Facts <span class="no-underline">→</span>
+        </a>
+      </li>
+      <li>
+        <a href="#"
+           class="text-black font-medium hover:underline cursor-pointer">
+          PepsiCo Health & Nutrition Sciences <span class="no-underline">→</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Card 3 -->
+  <div>
+    <img src="./Img/homepage_media_card_water.jpg" alt="Government & Policy" class="w-full h-auto object-cover">
+    <h3 class="mt-4 font-bold text-xl">Government & Policy</h3>
+    <ul class="mt-3 space-y-4">
+      <li>
+        <a href="#"
+           class="text-black font-medium hover:underline cursor-pointer">
+          Corporate Governance <span class="no-underline">→</span>
+        </a>
+      </li>
+      <li>
+        <a href="#"
+           class="text-black font-medium hover:underline cursor-pointer">
+          ESG Topics A–Z <span class="no-underline">→</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<footer class="bg-[#00539B] text-white font-sans relative">
+  <div class="max-w-7xl mx-auto px-16 py-10">
+    
+    <!-- Top row -->
+    <div class="flex justify-between items-start">
+      <!-- Logo -->
+      <div class="flex-shrink-0 hidden md:flex space-x-8 font-semibold text-white">
+        <a href="#" class="nav-link-right text-[20px] leading-[10px] absolute top-12 left-[185px] font-[900]">PEPSICO</a>
+      </div>
+
+      <!-- Back to top -->
+      <button class="flex items-center text-sm font-bold space-x-2">
+        <span>Back to top</span>
+        <span class="w-8 h-8 flex items-center justify-center rounded-full bg-white/20">↑</span>
+      </button>
+    </div>
+
+    <!-- Main links area -->
+    <div class="grid grid-cols-1 md:grid-cols-3 mt-12">
+      
+      <!-- Left column -->
+      <ul class="space-y-6 text-lg font-semibold">
+        <li><a href="#" class="footer-link">Careers ↗</a></li>
+        <li><a href="#" class="footer-link">Media Gallery</a></li>
+      </ul>
+
+      <!-- Middle column -->
+      <ul class="space-y-6 text-lg font-semibold">
+        <li><a href="#" class="footer-link">Global Sites</a></li>
+        <li><a href="#" class="footer-link">Site Map</a></li>
+      </ul>
+
+      <!-- Right column -->
+      <div class="text-right">
+        <!-- Social icons -->
+        <div class="flex justify-end space-x-6 mb-6">
+          <a href="#" class="hover:opacity-80"> <i class="fa-brands text-2xl fa-square-facebook"></i> </a>
+          <a href="#" class="hover:opacity-80"> <i class="fa-brands text-2xl fa-x-twitter"></i> </a>
+          <a href="#" class="hover:opacity-80"> <i class="fa-brands text-2xl fa-youtube"></i> </a>
+          <a href="#" class="hover:opacity-80"> <i class="fa-brands text-2xl fa-linkedin"></i> </a>
+          <a href="#" class="hover:opacity-80"> <i class="fa-brands text-2xl fa-instagram"></i> </a>
+        </div>
+        <!-- Right links -->
+        <ul class="space-y-5 text-[12px]">
+          <li><a href="#" class="footer-link">Frito Lay ↗</a></li>
+          <li><a href="#" class="footer-link">PepsiCo Product Facts ↗</a></li>
+          <li><a href="#" class="footer-link">PepsiCo Partners ↗</a></li>
+          <li><a href="#" class="footer-link">PepsiCo Labs ↗</a></li>
+          <li><a href="#" class="footer-link">Submit Ideas to PepsiCo ↗</a></li>
+          <li><a href="#" class="footer-link">Cookie Preferences</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="text-[12px] flex flex-wrap justify-center space-x-6">
+      <span>© PepsiCo 2025</span>
+      <a href="#" class="footer-link">Terms of Use</a>
+      <a href="#" class="footer-link">Privacy Policy</a>
+      <a href="#" class="footer-link">Accessibility Statement</a>
+      <a href="#" class="footer-link">About Our Ads</a>
+      <a href="#" class="footer-link">Modern Slavery Statement</a>
+    </div>
+  </div>
+</footer>
+
+
+
+
+  <!-- SwiperJS Script -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      loop: true,
+      autoplay: {
+        delay: 5000,       // 5 sec me slide change hoga
+        disableOnInteraction: false, // User click kare to bhi autoplay continue rahe
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+     var swiper = new Swiper(".myLatestSwiper", {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    slidesPerGroup: 1,  // ✅ एक-एक करके स्लाइड होगा
+    loop: true,        // true करोगे तो infinite loop होगा
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    breakpoints: {
+      0: { slidesPerView: 1, slidesPerGroup: 1 },
+      768: { slidesPerView: 2, slidesPerGroup: 1 },
+      1024: { slidesPerView: 3, slidesPerGroup: 1 }
+    }
+  });
+  </script>
+</body>
+
+</html>
