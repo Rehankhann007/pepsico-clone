@@ -78,14 +78,12 @@
 
     @keyframes marquee {
       0% {
-        transform: translateX(0);
+        transform: translateX(100%);
       }
 
       100% {
         transform: translateX(-100%);
       }
-
-      /* Half width tak hi shift hoga */
     }
 
     .marquee-wrapper {
@@ -96,8 +94,7 @@
     .animate-marquee {
       display: flex;
       width: max-content;
-      animation: marquee 40s linear infinite;
-      /* Speed control */
+      animation: marquee 25s linear infinite;
     }
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
   footer {
@@ -536,6 +533,15 @@
               <div class="text-white font-sans text-[18px] font-[400]">Only the best for our partners</div>
     </div>
     </div>
+  </section>
+
+  <section class="relative h-[300px]  text-[180px] text-[#eeefef]">
+    <div class="absolute left-[2px] top-[80px]">Social</div>
+    <div class="absolute flex items-center top-[210px] left-[125px] text-[32px] text-black">
+      <div class="bg-blue-800 h-2 w-8 "></div>
+      <div class="px-2">Stay connected</div>
+    </div>
+    <img class="w-[340px] absolute bottom-[-8px] right-[-65px]" src="./Img/download.png" alt="">
   </section>
 
 <!-- Latest Section -->
